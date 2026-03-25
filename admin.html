@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DICE-M QR Generator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        body { text-align: center; padding-top: 50px; font-family: sans-serif; background: #2c3e50; color: white; }
+        #qrcode { background: white; padding: 20px; display: inline-block; border-radius: 10px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>SCAN FOR ATTENDANCE</h1>
+    <div id="qrcode"></div>
+    <h2 id="date"></h2>
+    <script>
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('date').innerText = "Valid for: " + today;
+        
+        // Use your specific GitHub URL here
+        const siteUrl = "https://dicem4654.github.io/attendance/";
+        
+        new QRCode(document.getElementById("qrcode"), {
+            text: siteUrl + "?d=" + today,
+            width: 300, 
+            height: 300
+        });
+    </script>
+</body>
+</html>
